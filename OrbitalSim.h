@@ -8,17 +8,6 @@
 #ifndef ORBITALSIM_H
 #define ORBITALSIM_H
 
-<<<<<<< HEAD
-/**
- * @brief Orbital body definition
- */
-struct OrbitalBody
-{
-    // Fill in your code here...
-
-
-};
-=======
 #include "raymath.h"
 #include <stdint.h>
 
@@ -35,19 +24,10 @@ typedef struct{
     Color color;
 
 }OrbitalBody;
->>>>>>> a655075 (con error de inclusion)
 
 /**
  * @brief Orbital simulation definition
  */
-<<<<<<< HEAD
-struct OrbitalSim
-{
-    // Fill in your code here...
-
-
-};
-=======
 typedef struct{
     
     uint64_t time_step;
@@ -56,7 +36,6 @@ typedef struct{
                                 // Crear los OrbitalBody con una funcion.
 
 }OrbitalSim;
->>>>>>> a655075 (con error de inclusion)
 
 OrbitalSim *constructOrbitalSim(float timeStep);
 void destroyOrbitalSim(OrbitalSim *sim);

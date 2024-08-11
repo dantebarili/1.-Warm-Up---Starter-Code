@@ -9,6 +9,7 @@
 #define ORBITALSIM_H
 
 #include "raymath.h"
+#include "raylib.h"
 #include <stdint.h>
 
 /**
@@ -16,12 +17,13 @@
  */
 typedef struct{
 
-    const char *nombre; // Name
+    const char *nombre; 
     Vector3 posicion;
     Vector3 velocidad;
     float masa;
     float radio;
     Color color;
+    int8_t anillos; // flag para saber si tiene anillos
 
 }OrbitalBody;
 
@@ -30,7 +32,7 @@ typedef struct{
  */
 typedef struct{
     
-    uint64_t time_step;
+    uint64_t timeStep;
     uint8_t cantidadCuerpos;
     OrbitalBody** cuerposCel;   // ** ya que cuerposCel esta definido en el Heap. 
                                 // Crear los OrbitalBody con una funcion.

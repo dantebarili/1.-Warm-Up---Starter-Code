@@ -13,6 +13,7 @@
 
 #include "OrbitalSim.h"
 #include "ephemerides.h"
+#include "calculos.h"
 
 #define GRAVITATIONAL_CONSTANT 6.6743E-11F
 #define ASTEROIDS_MEAN_RADIUS 4E11F
@@ -68,11 +69,12 @@ void configureAsteroid(OrbitalBody *body, float centerMass)
  */
 OrbitalSim *constructOrbitalSim(float timeStep)
 {
-    // Your code goes here...
+    // prueba para saber si funciona viewrender
+    OrbitalSim sim;
 
+    //for (int)
 
-
-    return NULL; // This should return your orbital sim
+    return &sim; // This should return your orbital sim
 }
 
 /**
@@ -80,8 +82,8 @@ OrbitalSim *constructOrbitalSim(float timeStep)
  */
 void destroyOrbitalSim(OrbitalSim *sim)
 {
-    // Your code goes here...
-
+    
+    // free del malloc
 
 }
 
@@ -92,7 +94,12 @@ void destroyOrbitalSim(OrbitalSim *sim)
  */
 void updateOrbitalSim(OrbitalSim *sim)
 {
-    // Your code goes here...
+    // Se le indica a la funcion encargada de mover los cuerpos celestes cual es 
+    // la struct de la simulacion y cuanto el tiempo que queremos que pase(campo de sim).
+
+    avanzaTiempo(sim, sim->timeStep);
+
+    
 
 
 }

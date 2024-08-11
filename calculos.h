@@ -4,6 +4,6 @@
 #include <math.h>
 #include "OrbitalSim.h"
 
-//void 
+void avanzaTiempo(OrbitalSim* sim, int64_t tiempo); 
 
 #endif

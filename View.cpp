@@ -94,8 +94,19 @@ void renderView(View *view, OrbitalSim *sim)
     ClearBackground(BLACK);
     BeginMode3D(view->camera);
 
-    // Fill in your 3D drawing code here:
+    int i;
 
+    // dibujo todos los cuerpos celestes en funcion de sus atributos
+
+    for(i=0; i<sim->cantidadCuerpos; i++){
+        
+        if(sim->cuerposCel[i]->anillos == 1){
+            DrawSphereEx(((*(sim->cuerposCel))+i)->posicion, ((*(sim->cuerposCel))+i)->radio, sim->cuerposCel[i]->anillos, 1, ((*(sim->cuerposCel))+i)->color);
+        }else{
+            DrawSphere(((*(sim->cuerposCel))+i)->posicion, ((*(sim->cuerposCel))+i)->radio, ((*(sim->cuerposCel))+i)->color);
+        }
+
+    }
 
 
     DrawGrid(10, 10.0f);

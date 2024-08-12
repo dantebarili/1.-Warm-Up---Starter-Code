@@ -65,23 +65,23 @@ void configureAsteroid(OrbitalBody *body, float centerMass)
 OrbitalSim *constructOrbitalSim(float timeStep)
 {
     //return NULL;
-    static OrbitalSim simulacion;
+    static OrbitalSim sim;
     // perdon franco que avance aca pero lo necesito
     // para hacer la prueba para saber si funciona viewrender (aerchivo view)
-    simulacion.cuerposCel = (OrbitalBody**)malloc(sizeof(OrbitalBody*));
-    simulacion.cuerposCel[0] = (OrbitalBody*)malloc(sizeof(OrbitalBody));
-    simulacion.cuerposCel[0]->nombre = (char*)malloc(sizeof(char)*4);
+    sim.cuerposCel = (OrbitalBody**)malloc(sizeof(OrbitalBody*));
+    sim.cuerposCel[0] = (OrbitalBody*)malloc(sizeof(OrbitalBody));
+    sim.cuerposCel[0]->nombre = (char*)malloc(sizeof(char)*4);
 
-    simulacion.cuerposCel[0]->nombre = "Sol";
-    simulacion.cuerposCel[0]->masa = 1988500E24F;
-    simulacion.cuerposCel[0]->radio = 0.005F*logf(695700E3F);
-    simulacion.cuerposCel[0]->color = GOLD;
-    simulacion.cuerposCel[0]->posicion = (Vector3){-1.283674643550172E+09F*1E-11, 2.589397504295033E+07F*1E-11, 5.007104996950605E+08F*1E-11};
-    simulacion.cuerposCel[0]->velocidad = (Vector3){0, 0, 0};
-    simulacion.cantidadCuerpos = 1;
-    simulacion.timeStep = timeStep;
+    sim.cuerposCel[0]->nombre = "Sol";
+    sim.cuerposCel[0]->masa = 1988500E24F;
+    sim.cuerposCel[0]->radio = 0.005F*logf(695700E3F);
+    sim.cuerposCel[0]->color = GOLD;
+    sim.cuerposCel[0]->posicion = (Vector3){-1.283674643550172E+09F*1E-11, 2.589397504295033E+07F*1E-11, 5.007104996950605E+08F*1E-11};
+    sim.cuerposCel[0]->velocidad = (Vector3){0, 0, 0};
+    sim.cantidadCuerpos = 1;
+    sim.timeStep = timeStep;
 
-    return &simulacion;
+    return &sim;
   
     /*
     OrbitalBody** cuerposCelestes;
@@ -102,9 +102,9 @@ OrbitalSim *constructOrbitalSim(float timeStep)
     // Hardcodeamos los atributos de los planetas del sistema solar
     crearSistemaSolar(cuerposCelestes);
 
-    simulacion.cuerposCel = cuerposCelestes;
+    sim.cuerposCel = cuerposCelestes;
 
-    return &simulacion; // This should return your orbital sim
+    return &sim; // This should return your orbital sim
     */
     
 }

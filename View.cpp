@@ -96,8 +96,9 @@ void renderView(View *view, OrbitalSim *sim)
 
         // dibujo todos los cuerpos celestes en funcion de sus atributos
         int i, j;
+        //esta linea no funciona...
         DrawSphere(sim->cuerposCel[0]->posicion, sim->cuerposCel[0]->radio, sim->cuerposCel[0]->color);
-//esta no funca...
+        
         /*
         for(i=0; i<sim->cantidadCuerpos; i++){
             if(sim->cuerposCel[i]->anillos == 1){

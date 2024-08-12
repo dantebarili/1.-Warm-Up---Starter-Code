@@ -60,7 +60,4 @@ void updateOrbitalSim(OrbitalSim *sim);
 
 void crearSistemaSolar(OrbitalBody** cuerposCelestes);
 
-//funcioines de calculos
-void avanzaTiempo(OrbitalSim*, int64_t);
-
 #endif

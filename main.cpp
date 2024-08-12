@@ -7,19 +7,20 @@
 
 #include "OrbitalSim.h"
 #include "View.h"
-#include<time.h>
+#include <time.h>
 
 #define SECONDS_PER_DAY 86400
 #define FPS 60
-#define time TIME_MULT ((SECONDS_PER_DAY)*(100)/FPS)
+#define TIME_MULT (((SECONDS_PER_DAY)*(100))/FPS)
 
 int main()
 {
-    
-    unsigned long int timeStep = ((clock())*TIME_MUlT);
+
+    float timeStep = ((clock())*TIME_MULT);     // franco: soy dante, cambie el tipo de dato
+                                                // por lo q pide construct
 
     OrbitalSim *sim = constructOrbitalSim(timeStep);
-    View *view = constructView(fps);
+    View *view = constructView(FPS);
 
     while (isViewRendering(view))
     {

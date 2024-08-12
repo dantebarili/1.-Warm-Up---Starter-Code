@@ -64,7 +64,7 @@ void configureAsteroid(OrbitalBody *body, float centerMass)
  */
 OrbitalSim *constructOrbitalSim(float timeStep)
 {
-
+    //return NULL;
     static OrbitalSim simulacion;
     // perdon franco que avance aca pero lo necesito
     // para hacer la prueba para saber si funciona viewrender (aerchivo view)
@@ -74,15 +74,15 @@ OrbitalSim *constructOrbitalSim(float timeStep)
 
     simulacion.cuerposCel[0]->nombre = "Sol";
     simulacion.cuerposCel[0]->masa = 1988500E24F;
-    simulacion.cuerposCel[0]->radio = 695700E3F;
+    simulacion.cuerposCel[0]->radio = 0.005F*logf(695700E3F);
     simulacion.cuerposCel[0]->color = GOLD;
-    simulacion.cuerposCel[0]->posicion = (Vector3){0, 0, 0};
+    simulacion.cuerposCel[0]->posicion = (Vector3){-1.283674643550172E+09F*1E-11, 2.589397504295033E+07F*1E-11, 5.007104996950605E+08F*1E-11};
     simulacion.cuerposCel[0]->velocidad = (Vector3){0, 0, 0};
     simulacion.cantidadCuerpos = 1;
     simulacion.timeStep = timeStep;
 
     return &simulacion;
-    
+  
     /*
     OrbitalBody** cuerposCelestes;
 

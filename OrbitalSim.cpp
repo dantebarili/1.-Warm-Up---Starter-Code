@@ -177,24 +177,3 @@ void crearSistemaSolar(OrbitalBody** cuerposCelestes){
 
 }
 
-//funcion calculos
-
-void avanzaTiempo(OrbitalSim* sim, int64_t tiempo){
-    
-    int i, j;
-    
-    for(i = 0; i<sim->cantidadCuerpos;i++){
-        
-        for(j=0; j<sim->cantidadCuerpos;j++){
-            
-            if(i==j)
-                continue;
-
-            Vector3 aceleracion;
-
-        }
-        
-    }
-
-}
-

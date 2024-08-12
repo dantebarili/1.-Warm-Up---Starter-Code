@@ -94,22 +94,29 @@ void renderView(View *view, OrbitalSim *sim)
     ClearBackground(BLACK);
     BeginMode3D(view->camera);
 
-    int i;
-
-    // dibujo todos los cuerpos celestes en funcion de sus atributos
-
-    for(i=0; i<sim->cantidadCuerpos; i++){
+        // dibujo todos los cuerpos celestes en funcion de sus atributos
+        int i, j;
+        DrawSphere(sim->cuerposCel[0]->posicion, sim->cuerposCel[0]->radio, sim->cuerposCel[0]->color);
+//esta no funca...
+        /*
+        for(i=0; i<sim->cantidadCuerpos; i++){
+            if(sim->cuerposCel[i]->anillos == 1){
+                DrawSphereEx(((*(sim->cuerposCel))+i)->posicion, ((*(sim->cuerposCel))+i)->radio, sim->cuerposCel[i]->anillos, 1, ((*(sim->cuerposCel))+i)->color);
+            }else{
+                DrawSphere(((*(sim->cuerposCel))+i)->posicion, ((*(sim->cuerposCel))+i)->radio, ((*(sim->cuerposCel))+i)->color);
+            }
         
-        if(sim->cuerposCel[i]->anillos == 1){
-            DrawSphereEx(((*(sim->cuerposCel))+i)->posicion, ((*(sim->cuerposCel))+i)->radio, sim->cuerposCel[i]->anillos, 1, ((*(sim->cuerposCel))+i)->color);
-        }else{
-            DrawSphere(((*(sim->cuerposCel))+i)->posicion, ((*(sim->cuerposCel))+i)->radio, ((*(sim->cuerposCel))+i)->color);
+            //si el cuerpo celeste tiene satelites:
+            if(sim->cuerposCel[i]->satelites != NULL){
+                for (j = 0; j < sim->cuerposCel[i]->cantidadSatelites; j++){
+                    DrawSphere(sim->cuerposCel[i]->satelites[j]->posicion, sim->cuerposCel[i]->satelites[j]->radio, sim->cuerposCel[i]->satelites[j]->color);
+                }  
+            }
         }
+    */
 
-    }
-
-
-    DrawGrid(10, 10.0f);
+        DrawGrid(10, 10.0f);
+        
     EndMode3D();
 
     // Fill in your 2D drawing code here:

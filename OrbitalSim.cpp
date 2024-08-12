@@ -8,12 +8,7 @@
 // Enables M_PI #define in Windows
 #define _USE_MATH_DEFINES
 
-#include <stdlib.h>
-#include <math.h>
-
 #include "OrbitalSim.h"
-#include "ephemerides.h"
-#include "calculos.h"
 
 #define GRAVITATIONAL_CONSTANT 6.6743E-11F
 #define ASTEROIDS_MEAN_RADIUS 4E11F
@@ -69,12 +64,49 @@ void configureAsteroid(OrbitalBody *body, float centerMass)
  */
 OrbitalSim *constructOrbitalSim(float timeStep)
 {
-    // prueba para saber si funciona viewrender
-    OrbitalSim sim;
 
-    //for (int)
+    static OrbitalSim simulacion;
+    // perdon franco que avance aca pero lo necesito
+    // para hacer la prueba para saber si funciona viewrender (aerchivo view)
+    simulacion.cuerposCel = (OrbitalBody**)malloc(sizeof(OrbitalBody*));
+    simulacion.cuerposCel[0] = (OrbitalBody*)malloc(sizeof(OrbitalBody));
+    simulacion.cuerposCel[0]->nombre = (char*)malloc(sizeof(char)*4);
 
-    return &sim; // This should return your orbital sim
+    simulacion.cuerposCel[0]->nombre = "Sol";
+    simulacion.cuerposCel[0]->masa = 1988500E24F;
+    simulacion.cuerposCel[0]->radio = 695700E3F;
+    simulacion.cuerposCel[0]->color = GOLD;
+    simulacion.cuerposCel[0]->posicion = (Vector3){0, 0, 0};
+    simulacion.cuerposCel[0]->velocidad = (Vector3){0, 0, 0};
+    simulacion.cantidadCuerpos = 1;
+    simulacion.timeStep = timeStep;
+
+    return &simulacion;
+    
+    /*
+    OrbitalBody** cuerposCelestes;
+
+    int i, j;
+
+    if((cuerposCelestes = (OrbitalBody**)malloc(sizeof(OrbitalBody*)*SOLARSYSTEM_BODYNUM)) == NULL){
+        // error en la asignacion de memoria en el heap
+        exit(1);
+    }
+
+    for(i = 0; i<SOLARSYSTEM_BODYNUM; i++){
+        if(cuerposCelestes[i] = (OrbitalBody*)malloc(sizeof(OrbitalBody))){
+            exit(1);
+        }
+    }
+
+    // Hardcodeamos los atributos de los planetas del sistema solar
+    crearSistemaSolar(cuerposCelestes);
+
+    simulacion.cuerposCel = cuerposCelestes;
+
+    return &simulacion; // This should return your orbital sim
+    */
+    
 }
 
 /**
@@ -97,9 +129,72 @@ void updateOrbitalSim(OrbitalSim *sim)
     // Se le indica a la funcion encargada de mover los cuerpos celestes cual es 
     // la struct de la simulacion y cuanto el tiempo que queremos que pase(campo de sim).
 
-    avanzaTiempo(sim, sim->timeStep);
-
-    
-
+    //avanzaTiempo(sim, sim->timeStep);
 
 }
+
+void crearSistemaSolar(OrbitalBody** cuerposCelestes){
+    
+    int i, c;
+
+    /*
+    for(i=0; i<SOLARSYSTEM_BODYNUM; i++){
+        // Copio todos los atributos
+
+        // -------NOMBRE-------
+        // reservo espacio en el Heap para el nombre
+        if(((cuerposCelestes[i]->nombre = (char*)malloc(sizeof(sistemaSolar[i].name))) == NULL)){
+            // error en la asignacion de memoria en el heap
+            exit(1);
+        }
+
+        for(c=0; sistemaSolar[i].name[c] != '\0'; c++){    
+            cuerposCelestes[i]->nombre[c] = sistemaSolar[i].name[c];
+        }
+
+        cuerposCelestes[i]->nombre[c] = '\0';
+
+        // -------DEMAS ATRIBUTOS PRESENTES EN EFEMERIDESBODY-------
+
+        cuerposCelestes[i]->masa = sistemaSolar[i].mass;
+        cuerposCelestes[i]->radio = sistemaSolar[i].radius;
+        cuerposCelestes[i]->color = sistemaSolar[i].color;
+        cuerposCelestes[i]->posicion = sistemaSolar[i].position;    //en C++ una struct es Lvalue
+        cuerposCelestes[i]->velocidad = sistemaSolar[i].velocity;
+        
+        if(!strncmp(cuerposCelestes[i]->nombre,"Saturno",100)){
+            cuerposCelestes[i]->anillos = 1;
+        }else{
+            cuerposCelestes[i]->anillos = 0;
+        }
+
+        //satelites (aun no configurado)
+        cuerposCelestes[i]->cantidadSatelites = 0;
+        cuerposCelestes[i]->satelites = NULL;
+
+    }
+    */
+
+}
+
+//funcion calculos
+
+void avanzaTiempo(OrbitalSim* sim, int64_t tiempo){
+    
+    int i, j;
+    
+    for(i = 0; i<sim->cantidadCuerpos;i++){
+        
+        for(j=0; j<sim->cantidadCuerpos;j++){
+            
+            if(i==j)
+                continue;
+
+            Vector3 aceleracion;
+
+        }
+        
+    }
+
+}
+

@@ -8,22 +8,36 @@
 #ifndef ORBITALSIM_H
 #define ORBITALSIM_H
 
-#include "raymath.h"
 #include "raylib.h"
+#include "raymath.h"
+
+#include <stdlib.h>
+#include <string.h>
+
+//para calculos
+#include <math.h>
 #include <stdint.h>
+
+#define SOLARSYSTEM_BODYNUM 9
 
 /**
  * @brief Orbital body definition
  */
 typedef struct{
 
-    const char *nombre; 
+    const char *nombre;
+    float masa;
+    float radio; 
+    Color color;
     Vector3 posicion;
     Vector3 velocidad;
-    float masa;
-    float radio;
-    Color color;
+    /*
+    //atributos espciales
     int8_t anillos; // flag para saber si tiene anillos
+    //opcional: puede hacer alto bardo
+    uint8_t cantidadSatelites;
+    struct OrbitalBody_s** satelites; // habria q poner TAG
+    */
 
 }OrbitalBody;
 
@@ -43,5 +57,10 @@ OrbitalSim *constructOrbitalSim(float timeStep);
 void destroyOrbitalSim(OrbitalSim *sim);
 
 void updateOrbitalSim(OrbitalSim *sim);
+
+void crearSistemaSolar(OrbitalBody** cuerposCelestes);
+
+//funcioines de calculos
+void avanzaTiempo(OrbitalSim*, int64_t);
 
 #endif

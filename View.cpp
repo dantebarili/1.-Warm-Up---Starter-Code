@@ -93,12 +93,9 @@ void renderView(View *view, OrbitalSim *sim)
 
     ClearBackground(BLACK);
     BeginMode3D(view->camera);
-
-        //funciona solo al debugear
-    //DrawSphere((Vector3){-1.283674643550172E+09F*1E-11, 2.589397504295033E+07F*1E-11, 5.007104996950605E+08F*1E-11}, 0.005F*logf(695700E3F), GOLD);
         
-        //esta linea no funciona...
-    DrawSphere(sim->cuerposCel[0]->posicion, sim->cuerposCel[0]->radio, sim->cuerposCel[0]->color);
+        //prueba dibujo sol hardcodeado
+        DrawSphere(sim->cuerposCel[0]->posicion, sim->cuerposCel[0]->radio, sim->cuerposCel[0]->color);
         
         /*
         int i, j;

@@ -31,4 +31,3 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_link_libraries(orbitalsim PRIVATE m ${CMAKE_DL_LIBS} pthread GL rt X11)
 endif()
 
-include_directories(/home/dante/dev/vcpkg/buildtrees/raylib/x64-linux-rel/raylib/include)

@@ -58,6 +58,6 @@ void destroyOrbitalSim(OrbitalSim *sim);
 
 void updateOrbitalSim(OrbitalSim *sim);
 
-void crearSistemaSolar(OrbitalBody** cuerposCelestes);
+OrbitalBody * crearSistemaSolar();
 
 #endif

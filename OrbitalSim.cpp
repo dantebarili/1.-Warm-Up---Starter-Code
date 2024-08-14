@@ -9,6 +9,8 @@
 #define _USE_MATH_DEFINES
 
 #include "OrbitalSim.h"
+#include"ephemerides.h"
+
 
 #define GRAVITATIONAL_CONSTANT 6.6743E-11F
 #define ASTEROIDS_MEAN_RADIUS 4E11F
@@ -65,21 +67,12 @@ void configureAsteroid(OrbitalBody *body, float centerMass)
 OrbitalSim *constructOrbitalSim(float timeStep)
 {
     
-    static OrbitalSim sim;
-    sim.timeStep= timeStep;
-    sim.cantidadCuerpos
+    static OrbitalSim * sim=(OrbitalSim*)malloc(sizeof(OrbitalSim));
+    sim->timeStep= timeStep;
+    sim->cantidadCuerpos =SOLARSYSTEM_BODYNUM;
+    sim->cuerposCel=crearSistemaSolar();
     
-    sim.cuerposCel = (OrbitalBody**)malloc(sizeof(OrbitalBody*));
-    sim.cuerposCel[0] = (OrbitalBody*)malloc(sizeof(OrbitalBody));
-    sim.cuerposCel[0]->nombre = (char*)malloc(sizeof(char)*4);
-
-    sim.cuerposCel[0]->nombre = "Sol";
-    sim.cuerposCel[0]->masa = 1988500E24F;
-    sim.cuerposCel[0]->radio = 0.005F*logf(695700E3F);
-    sim.cuerposCel[0]->color = GOLD;
-    sim.cuerposCel[0]->posicion = (Vector3){-1.283674643550172E+09F*1E-11, 2.589397504295033E+07F*1E-11, 5.007104996950605E+08F*1E-11};
-    sim.cuerposCel[0]->velocidad = (Vector3){0, 0, 0};
-    sim.cantidadCuerpos = 1;
+   
     
 
     return &sim;
@@ -116,7 +109,8 @@ OrbitalSim *constructOrbitalSim(float timeStep)
 void destroyOrbitalSim(OrbitalSim *sim)
 {
     
-    // free del malloc
+    free(sim->cuerposCel);//borramos el arreglo de curpos celestes
+    free(sim);//borramos la simulacion
 
 }
 
@@ -134,47 +128,13 @@ void updateOrbitalSim(OrbitalSim *sim)
 
 }
 
-void crearSistemaSolar(OrbitalBody** cuerposCelestes){
+OrbitalBody * crearSistemaSolar(){
+    static OrbitalBody * sistema_solar=(OrbitalBody*)malloc(SOLARSYSTEM_BODYNUM*sizeof(OrbitalBody));
+    for(int i=0;i<SOLARSYSTEM_BODYNUM;++i){
+        sistema_solar[i]=(OrbitalBody) solarSystem[i];
+        return &sistema_solar;
     
-    int i, c;
-
-    /*
-    for(i=0; i<SOLARSYSTEM_BODYNUM; i++){
-        // Copio todos los atributos
-
-        // -------NOMBRE-------
-        // reservo espacio en el Heap para el nombre
-        if(((cuerposCelestes[i]->nombre = (char*)malloc(sizeof(sistemaSolar[i].name))) == NULL)){
-            // error en la asignacion de memoria en el heap
-            exit(1);
-        }
-
-        for(c=0; sistemaSolar[i].name[c] != '\0'; c++){    
-            cuerposCelestes[i]->nombre[c] = sistemaSolar[i].name[c];
-        }
-
-        cuerposCelestes[i]->nombre[c] = '\0';
-
-        // -------DEMAS ATRIBUTOS PRESENTES EN EFEMERIDESBODY-------
-
-        cuerposCelestes[i]->masa = sistemaSolar[i].mass;
-        cuerposCelestes[i]->radio = sistemaSolar[i].radius;
-        cuerposCelestes[i]->color = sistemaSolar[i].color;
-        cuerposCelestes[i]->posicion = sistemaSolar[i].position;    //en C++ una struct es Lvalue
-        cuerposCelestes[i]->velocidad = sistemaSolar[i].velocity;
-        
-        if(!strncmp(cuerposCelestes[i]->nombre,"Saturno",100)){
-            cuerposCelestes[i]->anillos = 1;
-        }else{
-            cuerposCelestes[i]->anillos = 0;
-        }
-
-        //satelites (aun no configurado)
-        cuerposCelestes[i]->cantidadSatelites = 0;
-        cuerposCelestes[i]->satelites = NULL;
-
     }
-    */
 
 }
 

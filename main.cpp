@@ -16,8 +16,8 @@
 int main()
 {
 
-    float timeStep = ((clock())*TIME_MULT);     // franco: soy dante, cambie el tipo de dato
-                                                // por lo q pide construct
+    float timeStep = ((clock())*TIME_MULT);     //dante: joya
+                                                
 
     OrbitalSim *sim = constructOrbitalSim(timeStep);
     View *view = constructView(FPS);

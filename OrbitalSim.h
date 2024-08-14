@@ -46,7 +46,7 @@ typedef struct{
  */
 typedef struct{
     
-    uint64_t timeStep;
+    float timeStep;
     uint8_t cantidadCuerpos;
     OrbitalBody** cuerposCel;   // ** ya que cuerposCel esta definido en el Heap. 
                                 // Crear los OrbitalBody con una funcion.

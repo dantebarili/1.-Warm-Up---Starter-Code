@@ -64,10 +64,11 @@ void configureAsteroid(OrbitalBody *body, float centerMass)
  */
 OrbitalSim *constructOrbitalSim(float timeStep)
 {
-    //return NULL;
+    
     static OrbitalSim sim;
-    // perdon franco que avance aca pero lo necesito
-    // para hacer la prueba para saber si funciona viewrender (aerchivo view)
+    sim.timeStep= timeStep;
+    sim.cantidadCuerpos
+    
     sim.cuerposCel = (OrbitalBody**)malloc(sizeof(OrbitalBody*));
     sim.cuerposCel[0] = (OrbitalBody*)malloc(sizeof(OrbitalBody));
     sim.cuerposCel[0]->nombre = (char*)malloc(sizeof(char)*4);
@@ -79,7 +80,7 @@ OrbitalSim *constructOrbitalSim(float timeStep)
     sim.cuerposCel[0]->posicion = (Vector3){-1.283674643550172E+09F*1E-11, 2.589397504295033E+07F*1E-11, 5.007104996950605E+08F*1E-11};
     sim.cuerposCel[0]->velocidad = (Vector3){0, 0, 0};
     sim.cantidadCuerpos = 1;
-    sim.timeStep = timeStep;
+    
 
     return &sim;
   

@@ -68,12 +68,7 @@ OrbitalSim *constructOrbitalSim(float timeStep)
     static OrbitalSim * sim = (OrbitalSim*)malloc(sizeof(OrbitalSim));
     sim->timeStep = timeStep;
     sim->cantidadCuerpos = SOLARSYSTEM_BODYNUM;
-    sim->cuerposCel = crearSistemaSolar();
-    
-    // esto es un orbital body sim->cuerposCel[0]
-    return sim;
-  
-    /*
+      
     OrbitalBody** cuerposCelestes;
 
     int i, j;
@@ -95,7 +90,6 @@ OrbitalSim *constructOrbitalSim(float timeStep)
     sim.cuerposCel = cuerposCelestes;
 
     return &sim; // This should return your orbital sim
-    */
     
 }
 
@@ -127,7 +121,7 @@ void updateOrbitalSim(OrbitalSim *sim)
 OrbitalBody ** crearSistemaSolar(void){
 
     //static OrbitalBody * sistema_solar = (OrbitalBody*)malloc(SOLARSYSTEM_BODYNUM * sizeof(OrbitalBody));
-
+/*
     static OrbitalBody sistemaSolar[] = {
     {
         "Sol",
@@ -201,12 +195,12 @@ OrbitalBody ** crearSistemaSolar(void){
         {4.431790029686977E+12F, -8.954348456482631E+10F, -6.114486878028781E+11F},
         {7.066237951457524E+02F, -1.271365751559108E+02F, 5.417076605926207E+03F},
     },
-};
+    };
 
-    static OrbitalBody** pSistemaSolar = (OrbitalBody**)&sistemaSolar;
+    static OrbitalBody* pSistemaSolar = (OrbitalBody*)sistemaSolar;
 
     return pSistemaSolar;
-
+*/
 //malloc    return &sistema_solar;
 
 }

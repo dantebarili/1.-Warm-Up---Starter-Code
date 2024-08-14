@@ -25,7 +25,7 @@
  */
 typedef struct{
 
-    const char *nombre;
+    //char* nombre;
     float masa;
     float radio; 
     Color color;

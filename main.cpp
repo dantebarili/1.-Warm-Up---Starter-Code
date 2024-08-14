@@ -16,7 +16,7 @@
 int main()
 {
 
-    float timeStep = ((clock())*TIME_MULT);     //dante: joya
+    float timeStep = ((clock())*TIME_MULT);   
                                                 
 
     OrbitalSim *sim = constructOrbitalSim(timeStep);

@@ -97,6 +97,8 @@ void renderView(View *view, OrbitalSim *sim)
         //prueba dibujo sol hardcodeado
         DrawSphere(sim->cuerposCel[0]->posicion, sim->cuerposCel[0]->radio, sim->cuerposCel[0]->color);
         
+        DrawSphere((Vector3){0,0,0}, 0.005*logf(695700E3F), GOLD);
+
         /*
         int i, j;
         for(i=0; i<sim->cantidadCuerpos; i++){

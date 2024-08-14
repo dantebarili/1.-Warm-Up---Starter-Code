@@ -65,11 +65,11 @@ void configureAsteroid(OrbitalBody *body, float centerMass)
 OrbitalSim *constructOrbitalSim(float timeStep)
 {
     
-    static OrbitalSim * sim = (OrbitalSim*)malloc(sizeof(OrbitalSim));
-    sim->timeStep = timeStep;
-    sim->cantidadCuerpos = SOLARSYSTEM_BODYNUM;
-      
-    OrbitalBody** cuerposCelestes;
+    static OrbitalSim sim;
+    sim.timeStep = timeStep;
+    sim.cantidadCuerpos = SOLARSYSTEM_BODYNUM;
+
+    static OrbitalBody** cuerposCelestes;
 
     int i, j;
 
@@ -85,9 +85,17 @@ OrbitalSim *constructOrbitalSim(float timeStep)
     }
 
     // Hardcodeamos los atributos de los planetas del sistema solar
-    crearSistemaSolar(cuerposCelestes);
+    //crearSistemaSolar(cuerposCelestes);
 
     sim.cuerposCel = cuerposCelestes;
+
+    sim.cuerposCel[0]->radio = 695700E3F;
+    sim.cuerposCel[0]->color = GOLD;
+    /*    
+        GOLD,
+        {-1.283674643550172E+09F, 2.589397504295033E+07F, 5.007104996950605E+08F},
+        {-5.809369653802155E-00F, 2.513455442031695E-01F, -1.461959576560110E+01F},
+    */
 
     return &sim; // This should return your orbital sim
     
